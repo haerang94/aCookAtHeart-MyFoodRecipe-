@@ -1,0 +1,49 @@
+.recipes {
+  width: 33rem;
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  background: #faf2f2;
+  padding: 2rem;
+  position: relative;
+  border-radius: 0.5rem;
+  box-shadow: 2rem 3rem 5rem #aaa;
+}
+
+.recipes h2 {
+  background-color: rgba(161, 161, 161, 0.5);
+  /* 마지막 요소는 투명도 */
+  border-radius: 0.5rem;
+  padding: 0.3rem 0.5rem;
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  right: 2.5rem;
+  font-size: 2.5rem;
+  font-weight: 380;
+  text-shadow: 0 0.5rem 0.5rem #555;
+  color: #fff;
+}
+
+.recipes img {
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+.recipes a {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #7d5a5a;
+  padding: 3px;
+}
+
+.recipes button {
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #4d3e3e;
+  opacity: 0.8;
+  border: none;
+  border-radius: 0.5rem;
+  height: 4rem;
+}

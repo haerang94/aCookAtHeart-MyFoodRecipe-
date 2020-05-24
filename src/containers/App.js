@@ -1,7 +1,6 @@
 import React from "react";
-import FetchData from "./FetchData";
+import FetchData from "../components/FetchData";
 import "./App.css";
-import Recipe from "./components/Recipe";
 
 function App() {
   return (
