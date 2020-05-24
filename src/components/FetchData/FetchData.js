@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
-import { app_id, key } from "../Config";
-import Recipes from "./Recipes/Recipes";
+import { app_id, key } from "../../Config";
+import Recipes from "../Recipes/Recipes";
 import "./FetchData.css";
 
 const FetchData = () => {
@@ -24,13 +24,10 @@ const FetchData = () => {
   const getData = async () => {
     let data = await axios
       .get(url)
-      .then((res) => {
-        console.log(res);
-        return res;
-      })
+      .then((res) => res)
       .catch((err) => console.log(err));
+    console.log(data.data.hits);
     setRecipes(data.data.hits);
-    setFood("");
   };
 
   useEffect(() => {
@@ -41,6 +38,7 @@ const FetchData = () => {
     //새로  저장된 검색 food를 가지고 다시 url 호출
     e.preventDefault();
     setQuery(food);
+    setFood("");
   };
 
   const onChange = (e) => {

@@ -11,7 +11,7 @@
 }
 
 .recipes h2 {
-  background-color: rgba(161, 161, 161, 0.5);
+  background-color: rgba(161, 161, 161, 0.4);
   /* 마지막 요소는 투명도 */
   border-radius: 0.5rem;
   padding: 0.3rem 0.5rem;
@@ -37,13 +37,20 @@
   padding: 3px;
 }
 
-.recipes button {
-  font-size: 2rem;
+.recipes p {
+  font-size: 1.5rem;
   text-transform: uppercase;
-  color: #fff;
-  background-color: #4d3e3e;
-  opacity: 0.8;
-  border: none;
+  color: black;
+}
+
+.ingredient-btn {
+  text-align: center;
+  padding: 5px;
+  font-size: 1.8rem;
+  width: 150px;
+  margin: 5px 0 0 0;
+  text-transform: uppercase;
+  color: #f40552;
+  border: 1px solid #f40552;
   border-radius: 0.5rem;
-  height: 4rem;
 }

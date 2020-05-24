@@ -1,19 +1,21 @@
 import React from "react";
 import "./Recipes.css";
 
-const Recipe = ({ recipe }) => {
-  const { label, image, url, ingredients } = recipe.recipe;
+const Recipes = ({ recipe }) => {
+  const { label, image, url, ingredients, source } = recipe.recipe;
 
   return (
-    <div className="recipes" style={{ margin: "10px", padding: "10px" }}>
+    <div className="recipes">
       <h2>{label}</h2>
       <img src={image} alt={label} />
       <a href={url} target="_blank" rel="noopener noreferrer">
         Recipe Link
       </a>
-      <button>ingredients</button>
+      <p>publisher: {source}</p>
+
+      <button className="ingredient-btn">ingredient</button>
     </div>
   );
 };
 
-export default Recipe;
+export default Recipes;
