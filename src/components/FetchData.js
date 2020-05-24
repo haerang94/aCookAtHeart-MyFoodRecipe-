@@ -8,27 +8,39 @@ import "./FetchData.css";
 const FetchData = () => {
   const [food, setFood] = useState("");
   const [recipes, setRecipes] = useState([]);
+  const [query, setQuery] = useState("korean");
 
-  const url = `https://api.edamam.com/search?q=${food}&app_id=${app_id}&app_key=${key}&from=0&to=10&calories=591-722`;
+  const url = `https://api.edamam.com/search?q=${query}&app_id=${app_id}&app_key=${key}&from=0&to=10&calories=591-722`;
+
+  // Get Data by Fetch
+  // const getData = async () => {
+  //   const response = await fetch(url);
+  //   const data = await response.json();
+  //   console.log(data);
+  //   setRecipes(data.hits);
+  //   console.log(data.hits);
+  // };
 
   const getData = async () => {
     let data = await axios
       .get(url)
-      .then((res) => res)
+      .then((res) => {
+        console.log(res);
+        return res;
+      })
       .catch((err) => console.log(err));
-    console.log(data);
     setRecipes(data.data.hits);
     setFood("");
   };
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [query]);
 
   const onSubmit = (e) => {
     //새로  저장된 검색 food를 가지고 다시 url 호출
     e.preventDefault();
-    getData();
+    setQuery(food);
   };
 
   const onChange = (e) => {
