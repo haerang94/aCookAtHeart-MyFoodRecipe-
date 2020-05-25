@@ -12,7 +12,7 @@ const FetchData = () => {
   const [recipes, setRecipes] = useState([]);
   const [query, setQuery] = useState("korean");
 
-  const url = `https://api.edamam.com/search?q=${query}&app_id=${app_id}&app_key=${key}&from=0&to=100&calories=591-722`;
+  const url = `https://api.edamam.com/search?q=${query}&app_id=${app_id}&app_key=${key}&from=0&to=20&calories=591-722`;
 
   // Get Data by Fetch
   // const getData = async () => {
@@ -48,9 +48,21 @@ const FetchData = () => {
     setFood(e.target.value);
   };
 
+  const renderLoader = () => (
+    <div className="loader">
+      <span>L</span>
+      <span>O</span>
+      <span>A</span>
+      <span>D</span>
+      <span>I</span>
+      <span>N</span>
+      <span>G</span>
+    </div>
+  );
+
   return (
     <>
-      <Suspense fallback={<div>Lazy Loading...</div>}>
+      <Suspense fallback={renderLoader()}>
         <form className="search-form" onSubmit={onSubmit}>
           <input
             type="text"
