@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600,600i,700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style-type: none;
+  outline: none;
+}
+
+h1 {
+  font-size: 6rem;
+  letter-spacing: 0.1rem;
+  font-style: italic;
+  color: coral;
+  margin: 4rem 0;
+}
+
+.Home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

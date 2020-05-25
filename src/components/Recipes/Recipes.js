@@ -13,7 +13,7 @@ const Recipes = ({ recipe }) => {
       </a>
       <p>publisher: {source}</p>
 
-      <button className="ingredient-btn">ingredient</button>
+      <button className="ingredient-btn">See ingredient</button>
     </div>
   );
 };

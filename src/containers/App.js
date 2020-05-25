@@ -1,16 +1,32 @@
 import React from "react";
-import FetchData from "../components/FetchData/FetchData";
+import Ingredients from "../components/Ingredients/Ingredients";
+import Home from "./Home";
 import "./App.css";
+import Nav from "../components/Nav/Nav";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="page-header">
-        <h1 className="app-title">All Your Recipes</h1>
-      </header>
-      <FetchData />
-    </div>
+    <Router>
+      <div className="App">
+        <Nav />
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/home" component={Home} />
+          <Route path="/ingredients/:id" component={Ingredients} />
+          <Route>
+            <h1 style={style}>Not Found 404</h1>
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
+
+const style = {
+  color: "red",
+  display: "flex",
+  justifyContent: "center",
+};
 
 export default App;

@@ -1,6 +1,6 @@
 nav {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 
   min-height: 10vh;
@@ -9,9 +9,13 @@ nav {
 }
 
 .nav-ul {
-  width: 40%;
+  width: 50%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   list-style: none;
+}
+
+Link {
+  color: white;
 }

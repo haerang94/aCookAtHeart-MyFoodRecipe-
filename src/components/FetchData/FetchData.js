@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import { app_id, key } from "../../Config";
-import Recipes from "../Recipes/Recipes";
+// import Recipes from "../Recipes/Recipes";
 import "./FetchData.css";
+
+const LazyRecipes = React.lazy(() => import("../Recipes/Recipes"));
 
 const FetchData = () => {
   const [food, setFood] = useState("");
   const [recipes, setRecipes] = useState([]);
   const [query, setQuery] = useState("korean");
 
-  const url = `https://api.edamam.com/search?q=${query}&app_id=${app_id}&app_key=${key}&from=0&to=10&calories=591-722`;
+  const url = `https://api.edamam.com/search?q=${query}&app_id=${app_id}&app_key=${key}&from=0&to=100&calories=591-722`;
 
   // Get Data by Fetch
   // const getData = async () => {
@@ -48,20 +50,24 @@ const FetchData = () => {
 
   return (
     <>
-      <form className="search-form" onSubmit={onSubmit}>
-        <input
-          type="text"
-          placeholder="Search your food"
-          onChange={onChange}
-          value={food}
-        />
-        <input type="submit" value="search" />
-      </form>
-      {/* 각 레시피 리스트 인덱스는 (recipe,idx)의 idx나 uuid4사용 */}
-      <div className="searched-recipes">
-        {recipes !== [] &&
-          recipes.map((recipe) => <Recipes key={uuidv4()} recipe={recipe} />)}
-      </div>
+      <Suspense fallback={<div>Lazy Loading...</div>}>
+        <form className="search-form" onSubmit={onSubmit}>
+          <input
+            type="text"
+            placeholder="Search your food"
+            onChange={onChange}
+            value={food}
+          />
+          <input type="submit" value="search" />
+        </form>
+        {/* 각 레시피 리스트 인덱스는 (recipe,idx)의 idx나 uuid4사용 */}
+        <div className="searched-recipes">
+          {recipes !== [] &&
+            recipes.map((recipe) => (
+              <LazyRecipes key={uuidv4()} recipe={recipe} />
+            ))}
+        </div>
+      </Suspense>
     </>
   );
 };

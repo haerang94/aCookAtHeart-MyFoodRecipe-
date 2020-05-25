@@ -54,6 +54,7 @@ html {
   color: #fff;
   font-weight: bold;
   border: 2px solid #ff926b;
+  cursor: pointer;
 }
 
 .searched-recipes {
