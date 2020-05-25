@@ -2,6 +2,7 @@ import React, { useState, useEffect, Suspense } from "react";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import { app_id, key } from "../../Config";
+import Loader from "../Loader/Loader";
 // import Recipes from "../Recipes/Recipes";
 import "./FetchData.css";
 
@@ -48,21 +49,9 @@ const FetchData = () => {
     setFood(e.target.value);
   };
 
-  const renderLoader = () => (
-    <div className="loader">
-      <span>L</span>
-      <span>O</span>
-      <span>A</span>
-      <span>D</span>
-      <span>I</span>
-      <span>N</span>
-      <span>G</span>
-    </div>
-  );
-
   return (
     <>
-      <Suspense fallback={renderLoader()}>
+      <Suspense fallback={Loader()}>
         <form className="search-form" onSubmit={onSubmit}>
           <input
             type="text"

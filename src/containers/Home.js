@@ -1,20 +1,21 @@
-import React from "react";
-import FetchData from "../components/FetchData/FetchData";
+import React, { Suspense, lazy } from "react";
+// import FetchData from "../components/FetchData/FetchData";
 import "./Home.css";
+import Loader from "../components/Loader/Loader";
 
-// const LazyFetchData = React.lazy(() =>
-//   import("../components/FetchData/FetchData")
-// );
+const LazyFetchData = lazy(() => import("../components/FetchData/FetchData"));
 
 function Home() {
   return (
-    <div className="Home">
-      <header className="page-header">
-        <h1 className="app-title">All Your Recipes</h1>
-      </header>
+    <Suspense fallback={Loader()}>
+      <div className="Home">
+        <header className="page-header">
+          <h1 className="app-title">All Your Recipes</h1>
+        </header>
 
-      <FetchData />
-    </div>
+        <LazyFetchData />
+      </div>
+    </Suspense>
   );
 }
 

@@ -1,27 +1,31 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import Ingredients from "../components/Ingredients/Ingredients";
-import Home from "./Home";
 import "./App.css";
-import Nav from "../components/Nav/Nav";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Loader from "../components/Loader/Loader";
 
-function App() {
+const Home = lazy(() => import("./Home"));
+const Nav = lazy(() => import("../components/Nav/Nav"));
+
+const App = () => {
   return (
     <Router>
-      <div className="App">
-        <Nav />
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/home" component={Home} />
-          <Route path="/ingredients/:id" component={Ingredients} />
-          <Route>
-            <h1 style={style}>Not Found 404</h1>
-          </Route>
-        </Switch>
-      </div>
+      <Suspense fallback={Loader()}>
+        <div className="App">
+          <Nav />
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/home" component={Home} />
+            <Route path="/ingredients/:id" component={Ingredients} />
+            <Route>
+              <h1 style={style}>Not Found 404</h1>
+            </Route>
+          </Switch>
+        </div>
+      </Suspense>
     </Router>
   );
-}
+};
 
 const style = {
   color: "red",
