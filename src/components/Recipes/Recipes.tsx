@@ -1,7 +1,21 @@
 import React from "react";
 import "./Recipes.css";
 
-const Recipes = ({ recipe }) => {
+interface Recipe {
+  label: string;
+  image: string;
+  url: string;
+  ingredients: string;
+  source: string;
+}
+
+interface Props {
+  recipe: {
+    recipe: Recipe;
+  };
+}
+
+const Recipes: React.FC<Props> = ({ recipe }) => {
   const { label, image, url, ingredients, source } = recipe.recipe;
 
   return (

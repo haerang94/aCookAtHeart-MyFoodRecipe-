@@ -7,7 +7,7 @@ import Loader from "../components/Loader/Loader";
 const Home = lazy(() => import("./Home"));
 const Nav = lazy(() => import("../components/Nav/Nav"));
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <Router>
       <Suspense fallback={Loader()}>
