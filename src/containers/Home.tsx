@@ -2,10 +2,12 @@ import React, { Suspense, lazy } from "react";
 // import FetchData from "../components/FetchData/FetchData";
 import "./Home.css";
 import Loader from "../components/Loader/Loader";
+import { connect } from "react-redux";
+import * as actions from "../actions/actions";
 
 const LazyFetchData = lazy(() => import("../components/FetchData/FetchData"));
 
-function Home() {
+const Home: React.FC = () => {
   return (
     <Suspense fallback={Loader()}>
       <div className="Home">
@@ -17,6 +19,18 @@ function Home() {
       </div>
     </Suspense>
   );
-}
+};
 
-export default Home;
+const mapStateToProps = (state) => {
+  return {
+    loading: state.loading,
+  };
+};
+
+const mapDispachToProps = (dispatch) => {
+  return {
+    loading: () => dispatch(actions.loading()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispachToProps)(Home);

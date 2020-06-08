@@ -65,7 +65,7 @@ const FetchData = () => {
         <div className="searched-recipes">
           {recipes !== [] &&
             recipes.map((recipe) => (
-              <LazyRecipes key={uuidv4()} recipe={recipe} />
+              <LazyRecipes key={uuidv4()} recipe={recipe} id={uuidv4()} />
             ))}
         </div>
       </Suspense>

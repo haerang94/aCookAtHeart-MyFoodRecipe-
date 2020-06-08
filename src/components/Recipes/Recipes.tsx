@@ -1,5 +1,6 @@
 import React from "react";
 import "./Recipes.css";
+import { Link } from "react-router-dom";
 
 interface Recipe {
   label: string;
@@ -13,11 +14,12 @@ interface Props {
   recipe: {
     recipe: Recipe;
   };
+  id: any;
 }
 
-const Recipes: React.FC<Props> = ({ recipe }) => {
+const Recipes: React.FC<Props> = ({ recipe, id }) => {
   const { label, image, url, ingredients, source } = recipe.recipe;
-
+  const linkPath = `/ingredients/${id}`;
   return (
     <div className="recipes">
       <h2>{label}</h2>
@@ -26,8 +28,9 @@ const Recipes: React.FC<Props> = ({ recipe }) => {
         Recipe Link
       </a>
       <p>publisher: {source}</p>
-
-      <button className="ingredient-btn">See ingredient</button>
+      <Link to={linkPath}>
+        <button className="ingredient-btn">See ingredient</button>
+      </Link>
     </div>
   );
 };
