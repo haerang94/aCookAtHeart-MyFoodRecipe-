@@ -1,5 +1,5 @@
-export const loading = () => {
+export const logInOut = () => {
   return {
-    type: "LOADIGNG",
+    type: "LOGINOUT",
   };
 };

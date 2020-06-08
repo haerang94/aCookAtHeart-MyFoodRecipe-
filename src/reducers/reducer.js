@@ -1,13 +1,13 @@
 const initialState = {
-  loading: false,
+  logInOut: false,
 };
 
 const reducer = (state = initialState, action) => {
   const newState = { ...state };
 
   switch (action.type) {
-    case "LOADING":
-      newState.loading = true;
+    case "LOGINOUT":
+      newState.logInOut = !state.logInOut;
       break;
 
     default:
