@@ -12,7 +12,7 @@ const App: React.FC = () => {
     <Router>
       <Suspense fallback={Loader()}>
         <div className="App">
-          <Nav />
+          {/* <Nav /> */}
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/home" component={Home} />
