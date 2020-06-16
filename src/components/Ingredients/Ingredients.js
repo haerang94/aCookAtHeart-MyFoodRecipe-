@@ -2,11 +2,8 @@ import React from "react";
 import "./Ingredients.css";
 import { connect } from "react-redux";
 import * as actions from "../../actions/actions";
-import { useSelector, useDispatch } from "react-redux";
 
-const Ingredients = (props) => {
-  const isLogged = useSelector((state) => state.logInOut);
-  const dispatch = useDispatch();
+const Ingredients = ({ isLogged, logInOut }) => {
   return (
     <>
       {isLogged ? (
@@ -14,9 +11,7 @@ const Ingredients = (props) => {
       ) : (
         <div className="login-form">
           로그인이 필요합니다
-          <button onClick={() => dispatch(actions.logInOut())}>로그인</button>
-          {/* props로 받아올시 문법질문  */}
-          {/* <button onClick={() => dispatch(actions.logInOut())}>로그인</button> */}
+          <button onClick={logInOut}>로그인</button>
         </div>
       )}
     </>
@@ -25,7 +20,7 @@ const Ingredients = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    logInOut: state.logInOut,
+    isLogged: state.isLogged,
   };
 };
 

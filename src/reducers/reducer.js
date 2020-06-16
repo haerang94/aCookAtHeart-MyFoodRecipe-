@@ -1,5 +1,5 @@
 const initialState = {
-  logInOut: false,
+  isLogged: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -7,7 +7,7 @@ const reducer = (state = initialState, action) => {
 
   switch (action.type) {
     case "LOGINOUT":
-      newState.logInOut = !state.logInOut;
+      newState.isLogged = !state.isLogged;
       break;
 
     default:
